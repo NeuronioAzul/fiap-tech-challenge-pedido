@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use TechChallenge\Infra\DB\Eloquent\{Customer\Model as Customer, Category\Model as Category, Order\Model as Order};
+use TechChallenge\Infra\DB\Eloquent\{Customer\Model as Customer, Category\Model as Category, Order\Model as Order, Product\Model as Product};
 
 
 class AppServiceProvider extends ServiceProvider
@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
                 return 'Database\\Factories\\CustomerFactory';
             }
 
-
             if ($modelName === Category::class) {
                 return 'Database\\Factories\\CategoryFactory';
             }
@@ -36,6 +35,9 @@ class AppServiceProvider extends ServiceProvider
                 return 'Database\\Factories\\OrderFactory';
             }
 
+            if ($modelName === Product::class) {
+                return 'Database\\Factories\\ProductFactory';
+            }
 
             return 'Database\\Factories\\' . class_basename($modelName) . 'Factory';
         });
